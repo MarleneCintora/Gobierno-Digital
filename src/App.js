@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { UserProvider } from './context/UserContext';
+import { Routes, Route } from "react-router-dom"
+import Home from "./components/Home/Home";
+import Detail from "./components/Detail"
+import AppPokebar from './components/AppPokebar';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#F63928',
+      contrastText: '#000',
+    },
+  },
+});
+const App = () => (
+  <ThemeProvider theme={darkTheme}>
+    <UserProvider>
+      <CssBaseline />
+      <AppPokebar />
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="details/:Id" element={<Detail />} />
+        </Route>
+      </Routes>
+    </UserProvider>
+  </ThemeProvider>
+);
 
 export default App;

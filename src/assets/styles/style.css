@@ -1,0 +1,30 @@
+body {
+  background-color: 0;
+}
+
+.fcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.footercontainer {
+  display: flex;
+  justify-content: left;
+}
+
+.footer{
+  background-color: #000;
+}
+
+
+@media (max-width: 768px) {
+  #logo {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  #logo {
+    width: 75%;
+  }
+}
