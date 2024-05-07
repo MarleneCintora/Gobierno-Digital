@@ -6,13 +6,12 @@ import AppPokebar from './components/AppPokebar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
       light: '#757ce8',
-      main: '#3f50b5',
+      main: '#3f50b5', 
       dark: '#002884',
       contrastText: '#fff',
     },
