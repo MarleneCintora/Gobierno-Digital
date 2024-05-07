@@ -9,33 +9,6 @@ export default function Catalog() {
 
     const { allPokemons } = useContext(userContext);
 
-    const fetchAllPokemons = () => {
-        getPokemons()
-            .then((response) => {
-                console.log("success");
-
-            })
-            .catch((error) => {
-                console.log("error: " + error);
-            });
-    };
-
-    useEffect(() => {
-        let isCancelled = false;
-        try {
-            fetchAllPokemons();
-            console.log('component will mount');
-        } catch (error) {
-            if (!isCancelled) {
-                throw error;
-            }
-        }
-        return () => {
-            isCancelled = true;
-            console.log('component will unmount');
-        };
-    }, []);
-
     return (
         <div>
             <Grid container spacing={3}>
