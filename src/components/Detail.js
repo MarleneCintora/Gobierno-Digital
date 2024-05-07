@@ -6,7 +6,7 @@ import { userContext } from "./../context/UserContext";
 import { useLocation } from "react-router-dom";
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
-
+import Footer from './Home/Footer';
 
 export default function Detail(props) {
 
@@ -21,8 +21,8 @@ export default function Detail(props) {
         getPokemonById(id)
             .then((response) => {
                 setInfo(response);
-                    setLoad(false);
-            
+                setLoad(false);
+
             })
             .catch((error) => {
                 console.log("error: " + error);
@@ -35,7 +35,7 @@ export default function Detail(props) {
             const esFlavorTexts = response.flavor_text_entries
                 .filter(entry => entry.language.name === "es")
                 .map(entry => entry.flavor_text);
-            const joinedFlavorTexts = esFlavorTexts.join(" "); 
+            const joinedFlavorTexts = esFlavorTexts.join(" ");
             setDetail(joinedFlavorTexts);
             setLoad(false)
         } catch (error) {
@@ -49,12 +49,12 @@ export default function Detail(props) {
 
     useEffect(() => {
         fetchDetailsPokemon(propsData);
-    }, []); 
+    }, []);
 
     return (
         <div>
             <Box sx={{ bgcolor: '#000000', height: '100vh' }} >
-            <NavigationBreadcrumbs nombre={info.name}/>
+                <NavigationBreadcrumbs nombre={info.name} />
                 {load || info.length === 0 ?
                     <>
                         <Grid container spacing={2} minHeight={160}>
@@ -72,9 +72,9 @@ export default function Detail(props) {
                     </>
                     :
                     <>
-                        <Grid container spacing={1} minHeight={160}>
+                        <Grid container spacing={1} minHeight={160} >
                             <Grid xs display="flex" justifyContent="center" alignItems="center">
-                                <Box sx={{ bgcolor: '#000000', maxWidth: 500}}>
+                                <Box sx={{ bgcolor: '#000000', maxWidth: 500 }}>
                                     <img
                                         src={info.sprites.other.dream_world.front_default}
                                         alt={info.name}
@@ -91,6 +91,7 @@ export default function Detail(props) {
                         </Grid>
                     </>
                 }
+                <Footer />
             </Box>
         </div >
     )
