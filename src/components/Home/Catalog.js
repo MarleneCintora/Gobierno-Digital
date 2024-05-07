@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { getPokemons } from "../../services/pokeapi";
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import CardPokemon from '../CardPokemon';
